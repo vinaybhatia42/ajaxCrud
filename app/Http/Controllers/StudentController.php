@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use  App\Models\User;
 use  App\Models\Student;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class StudentController extends Controller
         $student->first_name = $form_data['first_name'];
         $student->last_name = $form_data['last_name'];
         $student->email = $form_data['email'];
-        $student->gender = $form_data['gender'];
+        // $student->gender = $for m_data['gender'];
         if (empty($form_data['id']) || ($form_data['id'] == "")) {
             $student->save();
         } else {
@@ -38,5 +39,10 @@ class StudentController extends Controller
     public function editStudent(Request $request)
     {
         return Student::find($request->id);
+    }
+    public function deleteStudent(Request $request)
+    {
+        $student = Student::find($request->id);
+        $student->delete();
     }
 }
