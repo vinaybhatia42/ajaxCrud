@@ -31,4 +31,12 @@ class StudentController extends Controller
 
         // return redirect()->back()->with('success', 'Employee Created Successfully');
     }
+    public function getStudent(Request $request)
+    {
+        return Student::orderBy('id', 'desc')->get();
+    }
+    public function editStudent(Request $request)
+    {
+        return Student::find($request->id);
+    }
 }

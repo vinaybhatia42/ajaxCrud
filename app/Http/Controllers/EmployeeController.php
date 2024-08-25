@@ -29,12 +29,12 @@ class EmployeeController extends Controller
 
         // return redirect()->back()->with('success', 'Employee Created Successfully');
     }
-    public function getEmployee(Request $request)
-    {
-        return Employee::orderBy('id', 'desc')->get();
-    }
-    public function editEmployee(Request $request)
-    {
-        return Employee::find($request->id);
-    }
+        public function getEmployee(Request $request)
+        {
+            return Employee::orderBy('id', 'desc')->get();
+        }
+        public function editEmployee(Request $request)
+        {
+            return Employee::find($request->id);
+        }
 }
