@@ -14,7 +14,7 @@
   <div class="container mt-3">
     <h3>Modal Example</h3>
     <p id="respanel">Click on the button to open the modal.</p>
-
+    
     <button type="button" class="btn btn-primary newModal" data-bs-toggle="modal" data-bs-target="#myModal">
       Open modal
     </button>
@@ -38,16 +38,21 @@
 
               <div class="mb-3 mt-3">
                 <input type="hidden" name="id" id="id">
-                <label for="name">Name:</label>
-                <input type="name" class="form-control" id="name" placeholder="Enter name" name="name">
+                <label for="first_name">first_Name:</label>
+                <input type="first_name" class="form-control" id="first_name" placeholder="Enter first name" name="first_name">
+              </div>
+              <div class="mb-3 mt-3">
+                <input type="hidden" name="id" id="id">
+                <label for="last_name">last_name:</label>
+                <input type="last_name" class="form-control" id="last_name" placeholder="Enter last_name" name="last_name">
               </div>
               <div class="mb-3 mt-3">
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
               </div>
               <div class="mb-3">
-                <label for="phone">phone:</label>
-                <input type="phone" class="form-control" id="phone" placeholder="Enter phone" name="phone">
+                <label for="gender">gender:</label>
+                <input type="gender" class="form-control" id="gender" placeholder="Enter gender" name="Gender">
               </div>
               <div class="form-check mb-3">
                 <label class="form-check-label">
@@ -102,7 +107,7 @@
           var data = $('#submitForm').serialize();
 
           $.ajax({
-            url: "{{route('createEmp')}}",
+            url: "{{route('createStudent')}}",
             method: 'POST',
             data: {
               "_token": "{{csrf_token()}}",
@@ -130,7 +135,8 @@
             success: function(response) {
               $("#submitForm")[0].reset();
               $("#id").val(response.id);
-              $("#name").val(response.name);
+              $("#first_name").val(response.first_name);
+              $("#last_name").val(response.last_name);
               $("#email").val(response.email);
               $("#phone").val(response.phone);
               $('.btn-success').text('update');
@@ -141,6 +147,25 @@
             }
           });
         });
+        //Delete Students
+
+        $(document).on('click', '.btn-danger', function(e) {
+          e.preventDefault();
+          var id = $(this).val();
+          $.ajax({
+            url: "{{ route('deleteStudent') }}",
+            type: "post",
+            data: {
+              "_token": "{{ csrf_token() }}",
+              "id": id,
+            },
+            success: function(response) {
+              $("#respanel").html(response);
+              fetchrecords();
+            }
+          });
+        });
+
 
         function fetchrecords() {
           $.ajax({
