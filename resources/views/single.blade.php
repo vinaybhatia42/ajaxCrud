@@ -12,7 +12,7 @@
 
 <body>
   <div class="container mt-3">
-    <h3>Modal Example</h3>
+    <h3>Modal Examples</h3>
     <p id="respanel">Click on the button to open the modal.</p>
 
     <button type="button" class="btn btn-primary newModal" data-bs-toggle="modal" data-bs-target="#myModal">
