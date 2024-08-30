@@ -11,4 +11,4 @@ Route::post('edit-employee',[EmployeeController::class, 'editEmployee'])->name('
 Route::post('add-student',[StudentController::class, 'createStudent'])->name('createStudent');
 Route::get('get-student',[StudentController::class, 'getStudent'])->name('getStudent');
 Route::post('edit-student',[StudentController::class, 'editStudent'])->name('editStudent');
-Route::post('delete-student',[StudentController::class, 'deleteStudents'])->name('deleteStudent');
+Route::post('delete-student',[StudentController::class, 'deleteStudent'])->name('deleteStudent');
